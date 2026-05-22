@@ -50,8 +50,15 @@ export const updatePost = async (id, data, navigate) => {
   }
 };
 
-// 과제!!
-export const likePost = async (postId) => {};
+export const likePost = async (postId) => {
+  const response = await instanceWithToken.post(`/post/${postId}/like/`);
+  if (response.status === 200) {
+    console.log("LIKE SUCCESS");
+    window.location.reload();
+  } else {
+    console.log("[ERROR] error while liking post");
+  }
+};
 // 추가
 // Tag 관련 API들
 export const getTags = async () => {
